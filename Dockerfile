@@ -1,11 +1,11 @@
 FROM ubuntu:latest
 
 RUN apt-get update -y
-RUN apt-get install -y runit python-pip python-dev build-essential
+RUN apt-get install -y runit python-pip python-dev \\
+    build-essential redis-server python-celery-common 
 RUN pip install --upgrade pip
 
-COPY . /app
-WORKDIR /app
+COPY . .
 RUN pip install -r requirements.txt
 
 COPY gunicorn-config.py /etc/gunicorn/config.py
