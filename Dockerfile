@@ -1,11 +1,17 @@
 FROM ubuntu:latest
 
-RUN apt-get update -y
-RUN apt-get install -y runit python-pip python-dev \
-    build-essential redis-server
+RUN apt-get update && apt-get install -y \
+    runit \
+    python-pip \
+    python-dev \
+    build-essential \
+    redis-server
+
 RUN pip install --upgrade pip
 
-COPY . .
+COPY . /app
+WORKDIR /app
+
 RUN pip install -r requirements.txt
 
 COPY gunicorn-config.py /etc/gunicorn/config.py
