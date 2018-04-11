@@ -32,7 +32,7 @@ class Puzzle(Resource):
         models.db.session.commit()
         return data, 201
 
-api.add_resource(Puzzle, '/')
+api.add_resource(Puzzle, '/puzzle')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
