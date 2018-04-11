@@ -23,8 +23,8 @@ class Puzzle(Resource):
     parser.add_argument('solution', type=str, required=False)
 
     def get(self, puzzle_id):
-        queried_data = models.Puzzle.query.filter_by(id=puzzle_id)
-        return {puzzle_id: queried_data}
+        queried_data = models.Puzzle.query.get(puzzle_id)
+        return {puzzle_id: queried_data.fen}
     def post(self):
         data = Puzzle.parser.parse_args()
         new_puzzle = models.Puzzle(fen=data['fen'], game_url=data['url'], solution=data['solution'])
