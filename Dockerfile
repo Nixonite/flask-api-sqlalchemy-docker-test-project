@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
 RUN apt-get update -y
-RUN apt-get install -y runit python-pip python-dev \\
-    build-essential redis-server python-celery-common 
+RUN apt-get install -y runit python-pip python-dev \
+    build-essential redis-server
 RUN pip install --upgrade pip
 
 COPY . .
